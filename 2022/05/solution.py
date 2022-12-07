@@ -37,7 +37,7 @@ for l in lines[:empty_line_idx]:
         stacks[i//4].insert(0, crate)
 
 
-# print("stacks:", stacks)
+# pprint(stacks)
 
 instructions = []
 
@@ -47,13 +47,24 @@ for l in lines[empty_line_idx + 1:]:
 
 # print("instructions:", instructions)
 
-for move_x, from_s, to_s in instructions:
-    for _ in range(move_x):
-        stacks[to_s].append(stacks[from_s].pop())
+# for move_x, from_s, to_s in instructions:
+#     for _ in range(move_x):
+#         stacks[to_s].append(stacks[from_s].pop())
 
+
+# # pprint(stacks)
+
+# res = [y[-1] for y in stacks]
+
+# pprint(res)
+
+
+for move_x, from_s, to_s in instructions:
+    stacks[to_s].extend(stacks[from_s][-move_x:])
+    del stacks[from_s][-move_x:]
 
 # pprint(stacks)
 
 res = [y[-1] for y in stacks]
 
-pprint(res)
+pprint(''.join(res))
