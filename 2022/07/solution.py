@@ -32,3 +32,15 @@ for l in lines:
 res = sum(v for v in dir_sizes.values() if v <= 100000)
 
 print('Res:', res)
+
+
+#
+# Part 2
+#
+
+required_space = 30000000 - (70000000 - dir_sizes[Path("/")])
+
+res = min((v for v in dir_sizes.values() if v >= required_space))
+
+
+print('Res:', res)
